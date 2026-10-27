@@ -126,16 +126,16 @@ Never commit real secrets. Use `.env.example` as a template and keep real `.env`
 
 ```
 stelloom/
-├── src/main/java/com/sanskar/stelloom/
-│   ├── config/
-│   ├── controller/
-│   ├── dto/
-│   ├── exception/
-│   ├── mapper/
-│   ├── model/
-│   ├── repository/
-│   ├── security/
-│   └── service/
+├── src/main/java/com/sanskar/project/stelloom/
+│   ├── StelloomApplication.java
+│   ├── auth/                # JWT filter, auth controller & services
+│   ├── chat/                # Chat feature
+│   ├── common/
+│   │   └── exception/       # Global exception handling
+│   ├── config/              # Security & app configuration
+│   ├── feed/                # Feed feature
+│   ├── media/               # Media handling
+│   └── user/                # User entity, repository, services
 ├── src/main/resources/
 │   ├── application.yml
 │   └── db/migration/        # Flyway migrations (V1__init.sql, ...)
