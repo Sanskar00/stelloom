@@ -1,6 +1,8 @@
 spring:
   application:
     name: stelloom
+  config:
+    import: optional:file:.env[.properties]
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/stelloom}
@@ -53,6 +55,7 @@ app:
     # Dev-only default. Prod must override via the JWT_SECRET env var.
     secret: ${JWT_SECRET:dev-only-secret-change-me-at-least-32-chars-long}
     access-token-expiry-minutes: 30
+    access-token-expiration-seconds: 1800
     refresh-token-expiry-days: 7
   aws:
     region: ${AWS_REGION:ap-south-1}
@@ -71,3 +74,4 @@ logging:
   level:
     root: INFO
     com.sanskar: DEBUG
+
