@@ -1,6 +1,8 @@
-package com.sanskar.project.stelloom.entity;
+package com.sanskar.project.stelloom.chat;
 
-import com.sanskar.project.stelloom.entity.enums.RoomType;
+import com.sanskar.project.stelloom.common.exception.enums.RoomType;
+
+import com.sanskar.project.stelloom.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

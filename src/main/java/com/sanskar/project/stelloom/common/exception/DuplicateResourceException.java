@@ -1,4 +1,4 @@
-package com.sanskar.project.stelloom.exception;
+package com.sanskar.project.stelloom.common.exception;
 
 public class DuplicateResourceException extends RuntimeException{
     public DuplicateResourceException(String message) {

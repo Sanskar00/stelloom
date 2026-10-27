@@ -1,7 +1,8 @@
-package com.sanskar.project.stelloom.mapper;
+package com.sanskar.project.stelloom.auth.mapper;
 
 import com.sanskar.project.stelloom.auth.dto.AuthResponse;
-import com.sanskar.project.stelloom.user.dto.User;
+import com.sanskar.project.stelloom.user.User;
+import com.sanskar.project.stelloom.user.mapper.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,6 +1,7 @@
-package com.sanskar.project.stelloom.service;
+package com.sanskar.project.stelloom.auth;
 
-import com.sanskar.project.stelloom.user.dto.User;
+
+import com.sanskar.project.stelloom.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

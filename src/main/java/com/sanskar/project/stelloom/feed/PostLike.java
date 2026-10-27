@@ -1,5 +1,7 @@
-package com.sanskar.project.stelloom.entity;
+package com.sanskar.project.stelloom.feed;
 
+
+import com.sanskar.project.stelloom.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

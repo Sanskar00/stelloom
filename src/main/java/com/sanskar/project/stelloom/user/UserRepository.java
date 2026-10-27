@@ -1,6 +1,4 @@
-package com.sanskar.project.stelloom.repository;
-
-import com.sanskar.project.stelloom.user.dto.User;
+package com.sanskar.project.stelloom.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

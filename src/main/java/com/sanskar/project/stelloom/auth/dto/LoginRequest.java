@@ -1,4 +1,4 @@
-package com.sanskar.project.stelloom.dto;
+package com.sanskar.project.stelloom.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

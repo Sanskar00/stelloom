@@ -1,14 +1,14 @@
-package com.sanskar.project.stelloom.service;
+package com.sanskar.project.stelloom.auth;
 
 import com.sanskar.project.stelloom.auth.dto.AuthResponse;
 import com.sanskar.project.stelloom.auth.dto.LoginRequest;
 import com.sanskar.project.stelloom.auth.dto.RegisterRequest;
+import com.sanskar.project.stelloom.user.User;
 import com.sanskar.project.stelloom.user.dto.UserResponse;
-import com.sanskar.project.stelloom.user.dto.User;
-import com.sanskar.project.stelloom.exception.DuplicateResourceException;
-import com.sanskar.project.stelloom.mapper.AuthMapper;
-import com.sanskar.project.stelloom.mapper.UserMapper;
-import com.sanskar.project.stelloom.repository.UserRepository;
+import com.sanskar.project.stelloom.common.exception.DuplicateResourceException;
+import com.sanskar.project.stelloom.auth.mapper.AuthMapper;
+import com.sanskar.project.stelloom.user.mapper.UserMapper;
+import com.sanskar.project.stelloom.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;

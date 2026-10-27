@@ -1,8 +1,7 @@
-package com.sanskar.project.stelloom.entity;
+package com.sanskar.project.stelloom.user;
 
-import com.sanskar.project.stelloom.entity.enums.Role;
+import com.sanskar.project.stelloom.common.exception.enums.Role;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

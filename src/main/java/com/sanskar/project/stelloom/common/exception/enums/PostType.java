@@ -1,4 +1,4 @@
-package com.sanskar.project.stelloom.entity.enums;
+package com.sanskar.project.stelloom.common.exception.enums;
 
 public enum PostType {
     POST,

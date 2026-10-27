@@ -1,12 +1,11 @@
-package com.sanskar.project.stelloom.controller;
+package com.sanskar.project.stelloom.auth;
 
 
 
-import com.sanskar.project.stelloom.dto.AuthResponse;
-import com.sanskar.project.stelloom.dto.LoginRequest;
-import com.sanskar.project.stelloom.dto.RegisterRequest;
-import com.sanskar.project.stelloom.dto.UserResponse;
-import com.sanskar.project.stelloom.service.AuthService;
+import com.sanskar.project.stelloom.auth.dto.AuthResponse;
+import com.sanskar.project.stelloom.auth.dto.LoginRequest;
+import com.sanskar.project.stelloom.auth.dto.RegisterRequest;
+import com.sanskar.project.stelloom.user.dto.UserResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

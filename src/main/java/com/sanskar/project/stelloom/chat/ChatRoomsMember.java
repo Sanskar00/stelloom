@@ -1,6 +1,8 @@
-package com.sanskar.project.stelloom.entity;
+package com.sanskar.project.stelloom.chat;
 
-import com.sanskar.project.stelloom.entity.enums.MemberRole;
+import com.sanskar.project.stelloom.common.exception.enums.MemberRole;
+
+import com.sanskar.project.stelloom.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

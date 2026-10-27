@@ -1,8 +1,7 @@
-package com.sanskar.project.stelloom.dto;
+package com.sanskar.project.stelloom.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.*;
-import lombok.Builder;
 
 public record RegisterRequest (
         @Pattern(

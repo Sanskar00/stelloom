@@ -1,6 +1,6 @@
-package com.sanskar.project.stelloom.dto;
+package com.sanskar.project.stelloom.user.dto;
 
-import com.sanskar.project.stelloom.entity.enums.Role;
+import com.sanskar.project.stelloom.common.exception.enums.Role;
 import lombok.Builder;
 
 import java.time.Instant;

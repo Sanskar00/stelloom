@@ -1,7 +1,5 @@
-package com.sanskar.project.stelloom.filter;
+package com.sanskar.project.stelloom.auth;
 
-import com.sanskar.project.stelloom.service.AuthService;
-import com.sanskar.project.stelloom.service.JwtService;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
