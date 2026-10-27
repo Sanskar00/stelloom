@@ -6,6 +6,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,14 @@ import java.time.Instant;
 import java.util.Date;
 
 @Service
+@Getter
 public class JwtService {
 
     private final SecretKey key;
     private final long expirationSeconds;
 
-    public JwtService(@Value("${jwt.secret}") String secret,
-                      @Value("${jwt.expiration-seconds:1800}") long expirationSeconds) {
+    public JwtService(@Value("${app.jwt.secret}") String secret,
+                      @Value("${app.jwt.access-token-expiration-seconds}") long expirationSeconds) {
         this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
         this.expirationSeconds = expirationSeconds;
     }
@@ -47,10 +49,6 @@ public class JwtService {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
-    }
-
-    public long getExpirationSeconds() {
-        return expirationSeconds;
     }
 
     private Claims parse(String token) {
