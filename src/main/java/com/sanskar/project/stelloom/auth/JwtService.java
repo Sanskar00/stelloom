@@ -1,6 +1,6 @@
 package com.sanskar.project.stelloom.service;
 
-import com.sanskar.project.stelloom.entity.User;
+import com.sanskar.project.stelloom.user.dto.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

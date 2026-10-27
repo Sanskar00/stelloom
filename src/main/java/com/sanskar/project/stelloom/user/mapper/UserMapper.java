@@ -1,7 +1,7 @@
 package com.sanskar.project.stelloom.mapper;
 
-import com.sanskar.project.stelloom.dto.UserResponse;
-import com.sanskar.project.stelloom.entity.User;
+import com.sanskar.project.stelloom.user.dto.UserResponse;
+import com.sanskar.project.stelloom.user.dto.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,10 +1,10 @@
 package com.sanskar.project.stelloom.service;
 
-import com.sanskar.project.stelloom.dto.AuthResponse;
-import com.sanskar.project.stelloom.dto.LoginRequest;
-import com.sanskar.project.stelloom.dto.RegisterRequest;
-import com.sanskar.project.stelloom.dto.UserResponse;
-import com.sanskar.project.stelloom.entity.User;
+import com.sanskar.project.stelloom.auth.dto.AuthResponse;
+import com.sanskar.project.stelloom.auth.dto.LoginRequest;
+import com.sanskar.project.stelloom.auth.dto.RegisterRequest;
+import com.sanskar.project.stelloom.user.dto.UserResponse;
+import com.sanskar.project.stelloom.user.dto.User;
 import com.sanskar.project.stelloom.exception.DuplicateResourceException;
 import com.sanskar.project.stelloom.mapper.AuthMapper;
 import com.sanskar.project.stelloom.mapper.UserMapper;
@@ -14,8 +14,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
