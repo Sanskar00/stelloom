@@ -1,6 +1,8 @@
 package com.sanskar.project.stelloom.auth;
 
 
+import com.sanskar.project.stelloom.auth.dto.AuthUser;
+import com.sanskar.project.stelloom.common.exception.enums.Role;
 import com.sanskar.project.stelloom.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -31,7 +33,8 @@ public class JwtService {
     public String generateToken(User user) {
         Instant now = Instant.now();
         return Jwts.builder()
-                .subject(user.getUsername())
+                .subject(String.valueOf(user.getId()))
+                .claim("org",user.getOrganization().getId())
                 .claim("role", user.getRole().name())
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(now.plusSeconds(expirationSeconds)))
@@ -42,6 +45,20 @@ public class JwtService {
     public String extractUsername(String token) {
         return parse(token).getSubject();
     }
+
+    public AuthUser parseUser(String token) {
+        Claims c = parse(token);
+        Object org = c.get("org");
+        String role = c.get("role", String.class);
+        if (c.getSubject() == null || org == null || role == null) {
+            throw new JwtException("Missing claims");
+        }
+        return new AuthUser(
+                Long.valueOf(c.getSubject()),
+                ((Number) org).longValue(),      // small numbers come back as Integer, not Long
+                Role.valueOf(role));
+    }
+
 
     public boolean isValid(String token) {
         try {

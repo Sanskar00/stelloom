@@ -1,54 +1,53 @@
 package com.sanskar.project.stelloom.auth;
 
+import com.sanskar.project.stelloom.auth.dto.AuthUser;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
-    private final JwtService jwtService;                 // your class with extractUsername(...)
-    private final UserDetailsService userDetailsService;
+
+    private final JwtService jwtService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
 
-        String header = request.getHeader("Authorization");
+        String header = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (header == null || !header.startsWith("Bearer ")) {
             chain.doFilter(request, response);           // no token: continue unauthenticated
             return;
         }
 
-        String token = header.substring(7);
         try {
-            String username = jwtService.extractUsername(token);   // throws if invalid/expired
+            AuthUser user = jwtService.parseUser(header.substring(7));
 
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails user = userDetailsService.loadUserByUsername(username);
-
-                UsernamePasswordAuthenticationToken auth =
-                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            if (SecurityContextHolder.getContext().getAuthentication() == null) {
+                var auth = new UsernamePasswordAuthenticationToken(
+                        user, null,
+                        List.of(new SimpleGrantedAuthority("ROLE_" + user.role().name())));
                 auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
-        } catch (JwtException | UsernameNotFoundException e) {
-            // Bad token: leave the context empty. The security config below returns 401.
+        } catch (JwtException | IllegalArgumentException e) {
+            // bad, expired, or old-format token: stay unauthenticated, the entry point returns 401
+            logger.warn("JWT auth failed: " + e.getClass().getSimpleName());
         }
 
         chain.doFilter(request, response);

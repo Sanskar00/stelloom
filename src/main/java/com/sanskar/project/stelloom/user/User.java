@@ -1,6 +1,7 @@
 package com.sanskar.project.stelloom.user;
 
 import com.sanskar.project.stelloom.common.exception.enums.Role;
+import com.sanskar.project.stelloom.organization.Organization;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -46,4 +47,8 @@ public class User {
     @UpdateTimestamp
     @Column(name="updated_at")
     private Instant updatedAt;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "organization_id", nullable = false, updatable = false)
+    private Organization organization;
 }

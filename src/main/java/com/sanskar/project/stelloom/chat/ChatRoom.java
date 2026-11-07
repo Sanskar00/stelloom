@@ -2,6 +2,7 @@ package com.sanskar.project.stelloom.chat;
 
 import com.sanskar.project.stelloom.common.exception.enums.RoomType;
 
+import com.sanskar.project.stelloom.organization.Organization;
 import com.sanskar.project.stelloom.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -42,4 +43,7 @@ public class ChatRoom {
     @NotNull
     private Instant createdAt;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "organization_id", nullable = false, updatable = false)
+    private Organization organization;
 }
