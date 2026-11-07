@@ -10,5 +10,6 @@ public record RegisterRequest (
         )@NotBlank @Size(min=3, max=50) String username,
         @NotBlank @Email String email,
         @NotBlank @Size(min=8, max=72) String password,
-        @NotBlank @Size(max=100) String fullName
+        @NotBlank @Size(max=100) String fullName,
+        @NotBlank @Size(max=100) String organizationName
 ){}

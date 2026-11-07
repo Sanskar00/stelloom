@@ -2,6 +2,7 @@ package com.sanskar.project.stelloom.feed;
 
 import com.sanskar.project.stelloom.common.exception.enums.PostType;
 
+import com.sanskar.project.stelloom.organization.Organization;
 import com.sanskar.project.stelloom.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -60,5 +61,9 @@ public class Post {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "organization_id", nullable = false, updatable = false)
+    private Organization organization;
 }
 
